@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>KidDing – Kids Activity Discovery Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="KidDing by AyVid Pvt Ltd helps parents discover, book, and manage kids' activities with trusted hosts and personalized recommendations."
+  />
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --bg: #0f172a;
+      --card: #020617;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #22c55e;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    }
+    body {
+      background: radial-gradient(circle at top, #1e293b 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+      margin-bottom: 32px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-size: 20px;
+    }
+    .logo-text-title {
+      font-weight: 700;
+      font-size: 18px;
+    }
+    .logo-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    nav {
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    nav a:hover {
+      color: var(--text);
+    }
+    .btn-small {
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+    .btn-primary {
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.55);
+    }
+    .btn-primary:hover {
+      opacity: 0.95;
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.6fr);
+      gap: 32px;
+      align-items: center;
+      margin: 32px 0 40px;
+    }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(15, 118, 110, 0.1);
+      color: #5eead4;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+    .hero-tag span {
+      display: inline-flex;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #5eead4;
+    }
+    .hero-title {
+      font-size: clamp(32px, 4vw, 42px);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8, #a855f7);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero-subtitle {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 520px;
+    }
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 24px 0 12px;
+      align-items: center;
+    }
+    .hero-meta {
+      font-size: 12px;
+      color: var(--muted);
+    }
+    section {
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.9);
+      border-radius: 20px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      padding: 16px 16px 18px;
+      font-size: 13px;
+    }
+    ul {
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .badge {
+      font-size: 11px;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.15);
+      color: var(--muted);
+    }
+    .highlight {
+      color: #fbbf24;
+      font-weight: 500;
+    }
+    .contact {
+      background: linear-gradient(135deg, #1f2937, #020617);
+      border-radius: 24px;
+      padding: 18px 18px 22px;
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      font-size: 13px;
+    }
+    footer {
+      border-top: 1px solid rgba(55, 65, 81, 0.8);
+      margin-top: 40px;
+      padding-top: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: space-between;
+    }
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <header>
+      <div class="logo">
+        <div class="logo-icon">K</div>
+        <div>
+          <div class="logo-text-title">KidDing</div>
+          <div class="logo-text-sub">by AyVid Pvt Ltd</div>
+        </div>
+      </div>
+      <nav>
+        <a href="#features">Features</a>
+        <a href="#parents">For Parents</a>
+        <a href="#hosts">For Hosts</a>
+        <a href="#about">About Us</a>
+        <a href="#contact" class="btn-small">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div>
+        <div class="hero-tag">
+          <span></span>
+          <div>Coming soon • Early access open</div>
+        </div>
+        <h1 class="hero-title">
+          Discover <span>trusted kids activities</span> in one intelligent place.
+        </h1>
+        <p class="hero-subtitle">
+          KidDing is a smart platform by AyVid Pvt Ltd that helps parents
+          discover, book, and manage kids’ activities — while helping hosts
+          reach the right families with ease.
+        </p>
+        <div class="hero-cta-row">
+          <button class="btn-primary" onclick="window.location.href='mailto:hello@ayvidmind.com';">
+            Join Early Access
+          </button>
+          <div class="hero-meta">
+            We’re building the first version with real parents & hosts.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="features">
+      <h2 class="section-title">What We’re Building</h2>
+      <p class="section-subtitle">
+        KidDing connects parents and activity hosts on a single platform
+        designed for simplicity, trust, and transparency.
+      </p>
+      <div class="two-col">
+        <div class="card">
+          <h3>Smart Discovery</h3>
+          <ul>
+            <li>Search by age, location, category & interest.</li>
+            <li>Personalized recommendations based on your child.</li>
+            <li>Verified hosts and transparent reviews.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Seamless Management</h3>
+          <ul>
+            <li>Unified calendar for all kids’ schedules.</li>
+            <li>Track enrolments, timings, reminders & receipts.</li>
+            <li>Safe communication between parents and hosts.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOR PARENTS -->
+    <section id="parents" class="two-col">
+      <div>
+        <h2 class="section-title">For Parents</h2>
+        <p class="section-subtitle">
+          Helping busy families give their children the best learning experiences.
+        </p>
+        <ul>
+          <li>Discover trusted activities nearby.</li>
+          <li>Filter by interest, age, timings & price.</li>
+          <li>Track all kids’ activities in one place.</li>
+          <li>Store receipts, notes & reminders.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Join Our Early Community</h3>
+        <p>We’re speaking with parents to shape the first release.</p>
+        <p>Email: <span class="highlight">hello@ayvidmind.com</span></p>
+      </div>
+    </section>
+
+    <!-- FOR HOSTS -->
+    <section id="hosts" class="two-col">
+      <div class="card">
+        <h3>For Hosts, Coaches & Centres</h3>
+        <ul>
+          <li>Create rich activity listings.</li>
+          <li>Showcase photos, pricing & schedules.</li>
+          <li>Manage enquiries & bookings in one dashboard.</li>
+          <li>Communicate with parents securely.</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="section-title">Onboard as a Host</h2>
+        <p class="section-subtitle">
+          We’re onboarding selected hosts during our pilot rollout.
+        </p>
+        <p>Email: <span class="highlight">hosts@ayvidmind.com</span></p>
+      </div>
+    </section>
+
+    <!-- ABOUT AYVID -->
+    <section id="about">
+      <h2 class="section-title">About AyVid Pvt Ltd</h2>
+      <p class="section-subtitle">
+        AyVid Pvt Ltd is an India-based software company focused on building
+        intelligent, people-first digital applications like KidDing.
+      </p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>What We Do</h3>
+          <p>
+            We build modern, scalable software products that simplify everyday
+            life for parents, educators, and communities. Our flagship product,
+            KidDing, is designed to make kids’ activity discovery effortless.
+          </p>
+          <ul>
+            <li>India-first, global-ready architecture.</li>
+            <li>Privacy & safety built in from day one.</li>
+            <li>Deep collaboration with real families & hosts.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Our Mission</h3>
+          <p>
+            We aim to reduce the friction parents face when exploring learning,
+            sports, and enrichment opportunities for children. Our goal is to
+            empower hosts while providing families with trusted choices.
+          </p>
+          <p style="margin-top: 8px;">
+            For collaborations:  
+            <br><span class="highlight">founders@ayvidmind.com</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h3>Contact Us</h3>
+      <p>We’re currently inviting early parents, hosts, and partners.</p>
+      <p>Email: <span class="highlight">hello@ayvidmind.com</span></p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>© <span id="year"></span> AyVid Pvt Ltd. All Rights Reserved.</div>
+      <div>KidDing – Kids Activity Discovery Platform</div>
+    </footer>
+
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
